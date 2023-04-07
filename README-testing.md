@@ -2,7 +2,7 @@ Introduction
 ============
 
 PSI/J comes with a testing infrastructure that allows users to contribute
-tests of the PSI/J library itself on resources they have access to and where
+tests of the PSI/J library on resources they have access to and where
 running such tests is appropriate.
 
 Contributed tests take the form of normal pytest runs for which results
@@ -11,13 +11,13 @@ PSI/J branches with various resources can then be assessed and is
 available at https://testing.exaworks.org
 
 How to Run Tests
-================
+----------------
 
 There are a number of ways to run tests. Invoking `pytest` directly,
 running the integration tests, and through `cron` (or a similar tool).
 
 Setting up an Automated Testing Job
-===================================
+----------------
 
 This is the preferred way of running tests since it allows the PSI/J
 team to keep a constant eye on the state of the library on various
@@ -67,7 +67,7 @@ Testing with pytest
 ===================
 
 This is the most direct way to run the tests and it must be done from the
-main psij directory. Use the following steps:
+main PSI/J directory. Use the following steps:
 
 1. Install dependencies:
 ```bash
