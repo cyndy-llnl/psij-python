@@ -344,8 +344,6 @@ This implementation uses a helper, :py:meth:`psij.executors.batch.batch_schedule
 
 With these status methods in place, the ``pytest`` command from before should execute to completion.
 
-We still haven't implemented the cancel methods, though. That will be revealed by running a broader range of tests::
-
     PYTHONPATH=$PWD/src:$PYTHONPATH pytest 'tests' --executors=pbspro
 
 which should give this error (amongst others—this commandline formation is ugly and I'd like it to work more along the lines of `make test`)::
@@ -359,8 +357,6 @@ The two methods to implement for cancellation follow the same pattern as for sub
 
 * :py:meth:`.BatchSchedulerExecutor.get_cancel_command` - This should form a command for cancelling a job.
 * :py:meth:`.BatchSchedulerExecutor.process_cancel_command_output` - This should interpret the output from the cancel command.
-
-It looks like you don't actually need to implement `process_cancel_command_output` beyond the stub we already have, to make the abstract class mechanism happy. Maybe that's something that should change in psi/j?
 
 Here's an implementation of `get_cancel_command`::
 
@@ -391,9 +387,6 @@ So here's an updated `parse_status_output` which checks the ``Exit_status`` fiel
             r[native_id] = JobStatus(state, message=msg)
 
         return r
-
-
-This isn't necessarily the right thing to do: some PBS installs will use 128+9 = 137 to represent this instead of 256 + 9 = 265, according to the PBS documentation.
 
 
 
